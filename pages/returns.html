@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns & Refunds Policy | The Morning Dew Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .icon-circle {
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER (Navigation) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo - LINKS TO HOME PAGE -->
+                <a href="home.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2">
+                    The Morning Dew 🌅
+                </a>
+                
+                <!-- Navigation Links -->
+                <nav class="flex space-x-6 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">Shop</a>
+                    <a href="faqs.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">FAQs</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">Contact</a>
+                    
+                    <!-- Cart (Simulated Link) -->
+                    <button onclick="showFeedback('This is a static link! Go to the Shop page for cart.', 'info')" 
+                        class="relative p-2 text-gray-600 hover:text-amber-500 transition duration-150 rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amber-500" 
+                        aria-label="View Shopping Cart">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="bg-indigo-700 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-black text-white mb-3">
+                Returns & Exchanges Policy
+            </h1>
+            <p class="text-xl text-indigo-200">
+                Shop with confidence. We offer a simple, hassle-free process for all returns.
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT - POLICY OVERVIEW -->
+    <main class="max-w-4xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        
+        <!-- Summary Card -->
+        <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-amber-500 mb-12">
+            <h2 class="text-3xl font-extrabold text-indigo-800 mb-6">Our Promise: 30-Day Hassle-Free Returns</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p class="text-4xl font-bold text-amber-500">30</p>
+                    <p class="text-sm font-medium text-gray-600">Days to Return</p>
+                </div>
+                
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p class="text-4xl font-bold text-amber-500">100%</p>
+                    <p class="text-sm font-medium text-gray-600">Money-Back Guarantee</p>
+                </div>
+                
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p class="text-4xl font-bold text-amber-500">FREE</p>
+                    <p class="text-sm font-medium text-gray-600">Exchange Shipping</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Make a Return Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b pb-3">How to Start a Return (Step-by-Step)</h2>
+            <p class="text-lg text-gray-600 mb-6">Follow these simple steps to successfully return your item(s).</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Step 1 -->
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="icon-circle bg-indigo-100 text-indigo-600 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l-5 5"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-gray-900 mb-2">Step 1: Initiate Online</p>
+                    <p class="text-sm text-gray-600">Visit our <a href="#" class="text-amber-500 hover:text-amber-600 font-medium" onclick="showFeedback('Simulated link to the Returns Portal.', 'info')">Returns Portal</a> with your order number and email address to start the process.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="icon-circle bg-indigo-100 text-indigo-600 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10m0-10l-4-2.5m4 2.5l4 2.5M12 21v-4"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-gray-900 mb-2">Step 2: Package & Ship</p>
+                    <p class="text-sm text-gray-600">Securely package the item(s) in the original packaging, if possible. Affix the prepaid shipping label we provide.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="icon-circle bg-indigo-100 text-indigo-600 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944c-1.25.138-2.472.353-3.666.643M21 12a9 9 9 0 01-9 9m9-9h-2M3 12a9 9 9 0 019-9m-9 9h2M12 21a9 9 0 005.618-4.016m-4.07-.636l4-4"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-gray-900 mb-2">Step 3: Receive Refund</p>
+                    <p class="text-sm text-gray-600">Once received and inspected, refunds are processed back to your original payment method within 5-10 business days.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Policy Terms -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-8 border-b pb-3">Detailed Policy Terms</h2>
+            
+            <div class="space-y-8">
+                
+                <!-- Eligibility -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-amber-500">
+                    <h3 class="text-xl font-semibold text-gray-900 flex items-center mb-3">
+                        <svg class="w-6 h-6 mr-3 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Return Eligibility
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Items must be returned within <b>30 days</b> of delivery.</li>
+                        <li>Items must be <b>unused</b>, unwashed, and in the same condition that you received them.</li>
+                        <li>Items must be in the <b>original packaging</b> with all tags attached.</li>
+                        <li>Sale items or gift cards are non-refundable.</li>
+                    </ul>
+                </div>
+
+                <!-- Refunds -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-indigo-500">
+                    <h3 class="text-xl font-semibold text-gray-900 flex items-center mb-3">
+                        <svg class="w-6 h-6 mr-3 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"></path></svg>
+                        Refund Process
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Once your return is received and inspected, we will send you an email notification.</li>
+                        <li>If approved, your refund will be processed, and a credit will automatically be applied to your original method of payment.</li>
+                        <li><b>Processing Time:</b>Refunds take approximately </b>5-10 business days</b> to appear on your statement.</li>
+                        <li>Original shipping costs are non-refundable unless the return is due to an error on our part (e.g., damaged or incorrect item).</li>
+                    </ul>
+                </div>
+
+                <!-- Exchanges -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-green-500">
+                    <h3 class="text-xl font-semibold text-gray-900 flex items-center mb-3">
+                        <svg class="w-6 h-6 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.91 8.91 0 0112 21c-4.52 0-8.237-3.238-8.918-7.5H4a10 10 0 1014.288-14.288l2.583 2.583m-2.583-2.583v5h.582"></path></svg>
+                        Exchanges
+                    </h3>
+                    <p class="text-gray-600">If you need to exchange an item for a different size or color, please indicate this on the Returns Portal. We offer <b>free shipping</b> on the new exchange order. We will ship the replacement item once the original item is received and inspected.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Final Call to Action -->
+        <div class="text-center p-8 bg-indigo-50 rounded-xl mt-12 shadow-inner">
+            <h3 class="text-2xl font-bold text-indigo-900 mb-4">Ready to start your return?</h3>
+            <p class="text-indigo-700 mb-6">Have your order number ready and click the link below.</p>
+            <a href="#" 
+                onclick="showFeedback('Simulated link to the Returns Portal.','info')"
+                class="inline-flex items-center px-8 py-4 border border-transparent text-base font-bold rounded-lg shadow-md text-white bg-amber-500 hover:bg-amber-600 transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+                Go to Returns Portal
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </div>
+        
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1: About -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">The Dew</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Help & Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="faqs.html" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="returns.html" class="hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="shipping.html" class="hover:text-white transition">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Shop by Category -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="apparels.html" class="hover:text-white transition" onclick="filterByCategory('Apparels')">Apparels</a></li>
+                        <li><a href="electronics.html" class="hover:text-white transition" onclick="filterByCategory('Electronics')">Electronics</a></li>
+                        <li><a href="grocery.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Grocery</a></li>
+                        <li><a href="accessories.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Accessories</a></li>
+                        <li><a href="homegoods.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Home Goods</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm">Email: wyclifeouruh@gmail.com</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="https://www.facebook.com/share/19rDNfqWu1/" class="w-5 h-5 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.tiktok.com/@thedisciplesmin?is_from_webapp=1&sender_device=pc" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition duration-300 shadow-md" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+                        <a href="https://www.instagram.com/thedisciplesmin?igsh=ZHNsdDZpeGpvcTdr" class="w-5 h-5 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition duration-300 shadow-md" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/disciples_min?t=oMVpd9EATHmK0sm4ClYtqA&s=09" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-blue-800 transition duration-300 shadow-md" title="X (Twitter)"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="www.youtube.com/@WyclifeOuru" class="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300 shadow-md" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B4q1KiFW5SUenL76QYzoOnQ%3D%3D" class="w-5 h-5 flex items-center justify-center bg-blue-800 text-white rounded-full hover:bg-blue-900 transition duration-300 shadow-md" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="https://whatsapp.com/channel/0029VaxYcbH42DcW2rK9wk08" class="w-5 h-5 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 shadow-md" title="WhatsApp Channel"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 The Morning Dew Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple feedback function (for simulated links)
+        function showFeedback(message, type) {
+            const box = document.createElement('div');
+            box.id = 'feedback-box';
+            box.classList.add('fixed', 'top-4', 'right-4', 'w-80', 'p-4', 'rounded-xl', 'text-sm', 'z-50', 'shadow-2xl', 'transition-opacity', 'duration-300', 'opacity-100');
+            box.innerHTML = `<p id="feedback-message" class="font-medium">${message}</p>`;
+            document.body.appendChild(box);
+
+            // Set dynamic background/text colors
+            if (type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-800');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-100', 'text-green-800');
+            } else { // info
+                box.classList.add('bg-blue-100', 'text-blue-800');
+            }
+            
+            // Fade out and remove
+            setTimeout(() => {
+                box.classList.replace('opacity-100', 'opacity-0');
+            }, 3000);
+
+            setTimeout(() => {
+                 box.remove();
+            }, 3500);
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

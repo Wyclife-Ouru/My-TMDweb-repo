@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Groceries | The Morning Dew Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc; /* Clean white background */
+            color: #1f2937;
+        }
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER (Navigation) - Consistent Structure -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="home.html" class="text-2xl font-extrabold text-lime-600 hover:text-lime-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-500 p-2">
+                    The Morning Dew 🌅
+                </a>
+                
+                <!-- Navigation Links -->
+                <nav class="flex space-x-6 items-center">
+                    <a href="grocery.html" class="text-lime-600 hover:text-lime-700 font-bold transition duration-150 p-2 rounded-md bg-lime-50">Groceries</a>
+                    
+                    <!-- Cart (Simulated Link) -->
+                    <button onclick="showFeedback('Adding item to cart... (Simulated)', 'success')" 
+                        class="relative p-2 text-gray-600 hover:text-orange-500 transition duration-150 rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-500" 
+                        aria-label="View Shopping Cart">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO SECTION -->
+    <div class="bg-lime-600 py-16 mb-12 shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-extrabold text-white mb-3">
+                Farm Fresh & Pantry Staples
+            </h1>
+            <p class="text-xl text-lime-200">
+                Quality ingredients delivered right to your door. Today's special: 10% off all organic produce.
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN CATEGORIES AND PRODUCT GRID -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+
+        <!-- CATEGORIES SECTION (Navigation for groceries) -->
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-lime-200 pb-2">Shop By Category</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 mb-12">
+            <div class="text-center p-3 bg-white rounded-xl shadow-md cursor-pointer hover:bg-lime-50 transition duration-150">
+                <span class="text-4xl">🍎</span>
+                <p class="text-sm font-semibold mt-1 text-gray-700">Produce</p>
+            </div>
+            <div class="text-center p-3 bg-white rounded-xl shadow-md cursor-pointer hover:bg-lime-50 transition duration-150">
+                <span class="text-4xl">🍞</span>
+                <p class="text-sm font-semibold mt-1 text-gray-700">Bakery</p>
+            </div>
+            <div class="text-center p-3 bg-white rounded-xl shadow-md cursor-pointer hover:bg-lime-50 transition duration-150">
+                <span class="text-4xl">🥛</span>
+                <p class="text-sm font-semibold mt-1 text-gray-700">Dairy</p>
+            </div>
+            <div class="text-center p-3 bg-white rounded-xl shadow-md cursor-pointer hover:bg-lime-50 transition duration-150">
+                <span class="text-4xl">🥩</span>
+                <p class="text-sm font-semibold mt-1 text-gray-700">Meat</p>
+            </div>
+            <div class="text-center p-3 bg-white rounded-xl shadow-md cursor-pointer hover:bg-lime-50 transition duration-150">
+                <span class="text-4xl">🥫</span>
+                <p class="text-sm font-semibold mt-1 text-gray-700">Pantry</p>
+            </div>
+            <div class="text-center p-3 bg-white rounded-xl shadow-md cursor-pointer hover:bg-lime-50 transition duration-150">
+                <span class="text-4xl">🧼</span>
+                <p class="text-sm font-semibold mt-1 text-gray-700">Household</p>
+            </div>
+        </div>
+
+        <!-- FEATURED PRODUCTS GRID -->
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-lime-200 pb-2">Weekly Deals</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Product Card 1: Organic Bananas -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets//images/Organic Bananas.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/948a54/ffffff?text=Placeholder';" alt="Organic Bananas" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-lime-100 text-lime-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Organic Produce</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Organic Bananas (Per lb)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Sweet and ripe, perfect for smoothies or snacking. Source: Fair Trade Certified.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$0.79</span>
+                        <button onclick="addToCart('Organic Bananas')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1 lb)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2: Cage-Free Eggs -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets//images/Large Brown Cage-Free Eggs.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Placeholder';" alt="Cage-Free Eggs" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Dairy & Eggs</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Large Brown Cage-Free Eggs (Dozen)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Freshly laid and responsibly sourced from local farms.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$4.50</span>
+                        <button onclick="addToCart('Cage-Free Eggs')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1 Dozen)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3: Whole Wheat Bread -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets//images/artisan Whole Wheat Loaf.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/b8860b/ffffff?text=Placeholder';" alt="Whole Wheat Bread" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Fresh Bakery</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Artisan Whole Wheat Loaf</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Baked this morning with stone-ground whole wheat flour. No preservatives.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$3.99</span>
+                        <button onclick="addToCart('Whole Wheat Bread')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1 Loaf)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4: Extra Virgin Olive Oil -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets//images/Premium Extra Virgin Olive Oil.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4c7c34/ffffff?text=Placeholder';" alt="Olive Oil" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Pantry Staples</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Premium Extra Virgin Olive Oil (500ml)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">First cold press. Perfect for salads and cooking. Rich, fruity flavor.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$12.95</span>
+                        <button onclick="addToCart('Olive Oil')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1 Bottle)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5: Ground Coffee Beans -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/Morning Roast Ground Coffee.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/5a3922/ffffff?text=Placeholder';" alt="Ground Coffee Beans" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Beverages</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Morning Roast Ground Coffee (12oz)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Medium roast, ethically sourced Arabica beans. Rich and smooth flavor.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$8.75</span>
+                        <button onclick="addToCart('Ground Coffee')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1 Bag)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 6: Salmon Fillets -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/Wild Caught Salmon Fillets.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cc5500/ffffff?text=Placeholder';" alt="Salmon Fillets" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-pink-100 text-pink-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Meat & Seafood</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Wild Caught Salmon Fillets (1.5 lbs)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Frozen for freshness. High in Omega-3s. Sustainably sourced.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$19.99</span>
+                        <button onclick="addToCart('Salmon Fillets')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1.5 lbs)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 7: Dish Soap Refill -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/Eco-Friendly Dish Soap Refill.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/528399/ffffff?text=Placeholder';" alt="Dish Soap Refill" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Household</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Eco-Friendly Dish Soap Refill (64oz)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Biodegradable, plant-derived formula. Lemon verbena scent.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$7.50</span>
+                        <button onclick="addToCart('Dish Soap Refill')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1 Bottle)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 8: Cereal -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card">
+                <!-- Placeholder Image -->
+                <img src="../assets//images/Honey Crunch O's Cereal.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eab308/ffffff?text=Placeholder';" alt="Honey Nut Cereal" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Breakfast</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Honey Crunch O's Cereal (Large Box)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Family-sized box of crispy oats lightly sweetened with real honey.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-extrabold text-orange-600">$5.25</span>
+                        <button onclick="addToCart('Cereal')" class="bg-lime-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-lime-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add (1 Box)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End Product Grid -->
+
+    </main>
+
+    <!-- FOOTER - Consistent Structure -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1: About -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">The Dew</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Help & Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="faqs.html" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="returns.html" class="hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="shipping.html" class="hover:text-white transition">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Shop by Category -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="apparels.html" class="hover:text-white transition" onclick="filterByCategory('Apparels')">Apparels</a></li>
+                        <li><a href="electronics.html" class="hover:text-white transition" onclick="filterByCategory('Electronics')">Electronics</a></li>
+                        <li><a href="grocery.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Grocery</a></li>
+                        <li><a href="accessories.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Accessories</a></li>
+                        <li><a href="homegoods.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Home Goods</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm">Email: wyclifeouruh@gmail.com</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="https://www.facebook.com/share/19rDNfqWu1/" class="w-5 h-5 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.tiktok.com/@thedisciplesmin?is_from_webapp=1&sender_device=pc" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition duration-300 shadow-md" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+                        <a href="https://www.instagram.com/thedisciplesmin?igsh=ZHNsdDZpeGpvcTdr" class="w-5 h-5 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition duration-300 shadow-md" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/disciples_min?t=oMVpd9EATHmK0sm4ClYtqA&s=09" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-blue-800 transition duration-300 shadow-md" title="X (Twitter)"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="www.youtube.com/@WyclifeOuru" class="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300 shadow-md" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B4q1KiFW5SUenL76QYzoOnQ%3D%3D" class="w-5 h-5 flex items-center justify-center bg-blue-800 text-white rounded-full hover:bg-blue-900 transition duration-300 shadow-md" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="https://whatsapp.com/channel/0029VaxYcbH42DcW2rK9wk08" class="w-5 h-5 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 shadow-md" title="WhatsApp Channel"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 The Morning Dew Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple feedback function (for simulated actions like 'Add to Cart')
+        function showFeedback(message, type) {
+            const box = document.createElement('div');
+            box.id = 'feedback-box';
+            box.classList.add('fixed', 'top-4', 'right-4', 'w-80', 'p-4', 'rounded-xl', 'text-sm', 'z-50', 'shadow-2xl', 'transition-opacity', 'duration-300', 'opacity-100');
+            box.innerHTML = `<p id="feedback-message" class="font-medium">${message}</p>`;
+            document.body.appendChild(box);
+
+            // Set dynamic background/text colors
+            if (type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-800');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-100', 'text-green-800');
+            } else { // info
+                box.classList.add('bg-blue-100', 'text-blue-800');
+            }
+            
+            // Fade out and remove
+            setTimeout(() => {
+                box.classList.replace('opacity-100', 'opacity-0');
+            }, 3000);
+
+            setTimeout(() => {
+                 box.remove();
+            }, 3500);
+        }
+
+        function addToCart(productName) {
+            showFeedback(`${productName} added to cart!`, 'success');
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | The Morning Dew Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        /* Custom styling for the form input focus state */
+        .form-input:focus {
+            border-color: #4f46e5; /* indigo-600 */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5); /* indigo-500 with opacity */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER (Navigation) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo - LINKS TO HOME PAGE -->
+                <a href="home.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2">
+                    The Morning Dew 🌅
+                </a>
+                
+                <!-- Navigation Links -->
+                <nav class="flex space-x-6 items-center">
+                    <!-- Links -->
+                    <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">Shop</a>
+                    <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">About Us</a>
+                    <a href="privacy.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">Privacy</a>
+                    
+                    <!-- Cart (Simulated Link) -->
+                    <button onclick="showFeedback('This is a static link! Go to the Shop page for cart.', 'info')" 
+                        class="relative p-2 text-gray-600 hover:text-amber-500 transition duration-150 rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amber-500" 
+                        aria-label="View Shopping Cart">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="bg-indigo-50 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-black text-indigo-900 mb-3">
+                Get in Touch
+            </h1>
+            <p class="text-xl text-indigo-600">
+                We're here to help! Send us a message or contact us directly.
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT - Contact Layout -->
+    <main class="max-w-6xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            <!-- Column 1: Contact Information -->
+            <div class="lg:col-span-1 bg-white p-8 rounded-xl shadow-lg h-full">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2">Direct Contact</h2>
+
+                <!-- Email -->
+                <div class="mb-6">
+                    <p class="text-indigo-600 font-semibold mb-1 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26c.49.33 1.11.33 1.6 0L21 8M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8m-18 0l9 6 9-6"></path></svg>
+                        Email Support
+                    </p>
+                    <a href="mailto:wyclifeouruh@gmail.com" class="text-gray-700 hover:text-indigo-700 transition duration-150">wyclifeouruh@gmail.com</a>
+                </div>
+
+                <!-- Phone Call -->
+                <div class="mb-6">
+                    <p class="text-indigo-600 font-semibold mb-1 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.158L9.332 10.4a7 7 0 006.264 6.264l1.107-.502a1 1 0 011.158-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-12a2 2 0 01-2-2v-4.5"></path></svg>
+                        Phone Line
+                    </p>
+                    <a href="tel:+254791851137" class="text-gray-700 hover:text-indigo-700 transition duration-150 font-mono">+254 791 851 137</a>
+                </div>
+
+                <!-- WhatsApp Link -->
+                <div class="mb-6">
+                    <p class="text-indigo-600 font-semibold mb-1 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z"></path></svg>
+                        WhatsApp Chat
+                    </p>
+                    <!-- Uses the international format without the '+' -->
+                    <a href="https://wa.me/254791851137" target="_blank" class="text-green-600 hover:text-green-700 transition duration-150 font-mono flex items-center">
+                        Chat on WhatsApp
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-2H5m11 0l-5 5-5-5"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2 & 3: Contact Form -->
+            <div class="lg:col-span-2 bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2">Send Us a Message</h2>
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    
+                    <!-- Name -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm form-input transition duration-150" 
+                            placeholder="John Doe">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm form-input transition duration-150" 
+                            placeholder="you@example.com">
+                    </div>
+
+                    <!-- Subject -->
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                        <input type="text" id="subject" name="subject" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm form-input transition duration-150" 
+                            placeholder="Regarding an order / Product inquiry">
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="5" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm form-input transition duration-150" 
+                            placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-lg font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 transform hover:scale-[1.01] active:scale-[0.99]">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1: About -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">The Dew</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Help & Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="faqs.html" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="returns.html" class="hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="shipping.html" class="hover:text-white transition">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Shop by Category -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="apparels.html" class="hover:text-white transition" onclick="filterByCategory('Apparels')">Apparels</a></li>
+                        <li><a href="electronics.html" class="hover:text-white transition" onclick="filterByCategory('Electronics')">Electronics</a></li>
+                        <li><a href="grocery.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Grocery</a></li>
+                        <li><a href="accessories.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Accessories</a></li>
+                        <li><a href="homegoods.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Home Goods</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm">Email: wyclifeouruh@gmail.com</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="https://www.facebook.com/share/19rDNfqWu1/" class="w-5 h-5 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.tiktok.com/@thedisciplesmin?is_from_webapp=1&sender_device=pc" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition duration-300 shadow-md" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+                        <a href="https://www.instagram.com/thedisciplesmin?igsh=ZHNsdDZpeGpvcTdr" class="w-5 h-5 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition duration-300 shadow-md" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/disciples_min?t=oMVpd9EATHmK0sm4ClYtqA&s=09" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-blue-800 transition duration-300 shadow-md" title="X (Twitter)"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="www.youtube.com/@WyclifeOuru" class="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300 shadow-md" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B4q1KiFW5SUenL76QYzoOnQ%3D%3D" class="w-5 h-5 flex items-center justify-center bg-blue-800 text-white rounded-full hover:bg-blue-900 transition duration-300 shadow-md" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="https://whatsapp.com/channel/0029VaxYcbH42DcW2rK9wk08" class="w-5 h-5 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 shadow-md" title="WhatsApp Channel"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 The Morning Dew Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feedback Function (for form submission) -->
+    <div id="feedback-box" class="hidden fixed top-4 right-4 w-80 p-4 rounded-xl text-sm z-50 shadow-2xl transition-opacity duration-300 opacity-0" role="alert">
+        <p id="feedback-message" class="font-medium"></p>
+    </div>
+    
+    <script>
+        // Simple feedback function to handle non-functional actions gracefully
+        function showFeedback(message, type) {
+            const box = document.getElementById('feedback-box');
+            const msgElement = document.getElementById('feedback-message');
+            
+            // Reset classes
+            box.className = 'hidden fixed top-4 right-4 w-80 p-4 rounded-xl text-sm z-50 shadow-2xl transition-opacity duration-300 opacity-0';
+            
+            msgElement.textContent = message;
+
+            if (type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-800');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-100', 'text-green-800');
+            } else { // info
+                box.classList.add('bg-blue-100', 'text-blue-800');
+            }
+
+            // Show and fade in
+            box.classList.remove('hidden', 'opacity-0');
+            box.classList.add('opacity-100');
+
+            setTimeout(() => {
+                // Fade out
+                box.classList.replace('opacity-100', 'opacity-0');
+            }, 3000);
+
+            setTimeout(() => {
+                 // Hide after fade out
+                 box.classList.add('hidden');
+            }, 3500);
+        }
+        window.showFeedback = showFeedback;
+
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Stop the default form submission
+
+            // Basic validation check
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                // Simulate successful submission
+                showFeedback('Thank you, ' + name.split(' ')[0] + '! Your message has been received. We will respond within 24 hours.', 'success');
+                
+                // Clear the form
+                document.getElementById('contact-form').reset();
+            } else {
+                showFeedback('Please fill out all required fields.', 'error');
+            }
+        }
+        window.handleFormSubmit = handleFormSubmit;
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

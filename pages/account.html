@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up | The Morning Dew</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7; /* Light gray background, similar to twd's page */
+        }
+        .twd-indigo {
+            background-color: #3b82f6;
+        }
+        .twd-indigo-text {
+            color: #3b82f6;
+        }
+        .twd-indigo-hover:hover {
+            background-color: #3b82f6;
+        }
+        .input-group input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px #3b82f6;
+        }
+        .form-card {
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <header class="bg-white shadow sticky top-0 z-50">
+         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo - LINKS TO HOME PAGE -->
+                <a href="./account.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2">
+                    The Morning Dew 🌅
+                </a>
+
+            <div class="flex items-center space-x-4 ml-auto flex-shrink-0">
+                <a href="./account.html" class="inline-flex items-center justify-center px-3 py-1 border border-transparent text-lg font-medium rounded-xl shadow-lg text-white bg-amber-500 hover:bg-indigo-700 transition duration-300 transform hover:scale-105">Account</a>
+                    
+                    <!-- Cart Button -->
+                    <button onclick="showFeedback('This is a static link! Go to the Shop page for cart.', 'info')" 
+                        class="relative p-2 text-gray-600 hover:text-amber-500 transition duration-150 rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amber-500" 
+                        aria-label="View Shopping Cart">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Firebase SDK Imports and Setup -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // --- GLOBAL VARIABLES ---
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        let app = null;
+        let auth = null;
+        let db = null;
+        let userId = null;
+
+        /**
+         * Initializes Firebase and authenticates the user.
+         */
+        async function initializeFirebase() {
+            if (!firebaseConfig) {
+                console.error("Firebase config not available.");
+                document.getElementById('feedback-message').textContent = 'Error: Firebase configuration missing.';
+                return;
+            }
+
+            try {
+                // 1. Initialize App
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                // 2. Authentication
+                // Use custom token if available, otherwise sign in anonymously
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                // 3. Auth State Change Listener (Sets up UI after auth completes)
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        console.log("Firebase Auth Ready. User ID:", userId);
+                        // Update UI to show logged-in state (simulated)
+                        document.getElementById('feedback-message').textContent = `Authenticated successfully! User ID: ${userId}`;
+                        document.getElementById('login-form').classList.add('hidden');
+                        document.getElementById('welcome-message').classList.remove('hidden');
+                        document.getElementById('user-id-display').textContent = userId;
+
+                    } else {
+                        userId = null;
+                        console.log("No user signed in (or sign-in failed).");
+                        document.getElementById('feedback-message').textContent = 'Please log in or sign up.';
+                    }
+                });
+
+            } catch (error) {
+                console.error("Firebase initialization or sign-in failed:", error);
+                document.getElementById('feedback-message').textContent = `Authentication failed: ${error.message}`;
+            }
+        }
+
+        /**
+         * Simulates a login action. In a real app, this would use email/password or provider login.
+         */
+        window.handleLogin = function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                showFeedback('Please enter both email and password.', 'error');
+                return;
+            }
+
+            // Simulate a successful login with a delay
+            document.getElementById('login-btn').textContent = 'Logging in...';
+            document.getElementById('login-btn').disabled = true;
+
+            setTimeout(() => {
+                showFeedback(`Simulated login success for ${email}. You are now authenticated (as an anonymous user in this demo).`, 'success');
+                // The actual authentication is handled by the onAuthStateChanged listener after the initial token/anonymous sign-in.
+                document.getElementById('login-btn').textContent = 'Login';
+                document.getElementById('login-btn').disabled = false;
+            }, 1500);
+        }
+
+        /**
+         * Displays a simple feedback message.
+         */
+        function showFeedback(message, type) {
+            const box = document.getElementById('feedback-box');
+            const messageEl = document.getElementById('feedback-message');
+            messageEl.textContent = message;
+
+            box.className = 'p-3 rounded-lg text-center mt-4';
+            if (type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-700');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-100', 'text-green-700');
+            } else {
+                box.classList.add('bg-gray-200', 'text-gray-800');
+            }
+        }
+
+        // Initialize Firebase on window load
+        window.addEventListener('load', initializeFirebase);
+    </script>
+
+    <!-- MAIN LOGIN CONTAINER -->
+    <div class="max-w-4xl w-full mx-auto flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
+
+        <!-- Left Section: Ad/Promo Banner (Similar to TWD's persistent left sidebar) -->
+        <div class="hidden md:block md:w-5/12">
+            <div class="bg-white p-6 rounded-lg form-card border border-gray-200 h-full">
+                <h2 class="text-xl font-bold text-gray-700 mb-4">Why Sign Up with TMD?</h2>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-center">
+                        <span class="twd-indigo-text mr-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.27a.9.9 0 010 1.27l-4.27 4.27L12 18.54l-4.27-4.27-4.27 4.27-1.27-1.27a.9.9 0 010-1.27l4.27-4.27L5.46 9.46l-4.27-4.27a.9.9 0 011.27-1.27l4.27 4.27L12 5.46l4.27-4.27a.9.9 0 011.27 0l4.27 4.27-1.27 1.27-4.27 4.27z"></path></svg>
+                        </span>
+                        <span class="font-medium">Exclusive Offers & Discounts</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="twd-indigo-text mr-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2h-1v5m-1-5h1c1.657 0 3-.895 3-2s-1.343-2-3-2h-1v5"></path></svg>
+                        </span>
+                        <span class="font-medium">Manage Your Orders Easily</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="twd-indigo-text mr-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </span>
+                        <span class="font-medium">Faster Checkout & Delivery</span>
+                    </li>
+                </ul>
+                <img src="../assets/images/Promotion.jpg" alt="tmd style promotion" class="mt-8 w-full rounded-lg">
+            </div>
+        </div>
+
+        <!-- Right Section: Login/Form Area -->
+        <div class="w-full md:w-7/12">
+            <div class="bg-white p-6 sm:p-8 rounded-lg form-card border border-gray-200">
+                <h1 class="text-center text-3xl font-extrabold mb-2">
+                    Welcome to <span class="twd-indigo-text">TMD</span>
+                </h1>
+                <p class="text-center">Log in with your existing account or register.</p>
+
+                <!-- Feedback Box -->
+                <div id="feedback-box" class="p-3 rounded-lg text-center mt-4 bg-gray-200 text-gray-800">
+                    <p id="feedback-message">Initializing Firebase and authenticating user...</p>
+                </div>
+
+                <!-- Logged In Message (Hidden by default) -->
+                <div id="welcome-message" class="hidden text-center mt-8 p-6 bg-green-50 rounded-lg border border-green-200">
+                    <h2 class="text-xl font-bold text-green-700">You are connected!</h2>
+                    <p class="text-gray-600 mt-2">This is a simulated login environment. Your current user ID:</p>
+                    <code id="user-id-display" class="block mt-2 p-2 bg-gray-100 text-sm text-gray-700 break-all rounded"></code>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="mt-8" onsubmit="handleLogin(event)">
+                    
+                    <div class="mb-5 input-group">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg transition duration-150 text-gray-800 focus:outline-none focus:ring-1">
+                    </div>
+
+                    <div class="mb-6 input-group">
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg transition duration-150 text-gray-800 focus:outline-none focus:ring-1">
+                    </div>
+
+                    <!-- Login Button -->
+                    <button id="login-btn" type="submit" 
+                        class="twd-indigo w-full text-white font-semibold py-3 rounded-lg text-lg uppercase tracking-wider twd-indigo-hover transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f68b1e] shadow-md">
+                        Login
+                    </button>
+
+                    <div class="mt-4 text-center">
+                        <a href="#" class="text-xl text-amber-500 hover:text-gray-700 transition duration-150">Forgot your password?</a>
+                    </div>
+                </form>
+
+                <!-- Divider -->
+                <div class="flex items-center my-6">
+                    <div class="flex-grow border-t border-gray-200"></div>
+                    <span class="flex-shrink mx-4 text-gray-400 text-sm">OR</span>
+                    <div class="flex-grow border-t border-gray-200"></div>
+                </div>
+
+                <!-- Create Account Button -->
+                <button onclick="showFeedback('Redirecting to Registration Page (Simulated)', 'info')" 
+                    class="twd-indigo w-full text-white font-semibold py-3 rounded-lg text-lg uppercase tracking-wider twd-indigo-hover transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f68b1e] shadow-md">
+                    Create an Account
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

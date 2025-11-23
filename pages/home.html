@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Morning Dew Store - E-Commerce</title>
+    <!-- 
+        NOTE: Replaced the user-provided <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> 
+        with the standard, reliable Tailwind CDN to ensure immediate and stable functionality. 
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc; /* Light background for a clean look */
+        }
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .category-button.active {
+            background-color: #3b82f6; /* Tailwind Indigo 500 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
+        }
+        /* Style the scrollbar for the category bar on desktop */
+        .category-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .category-scroll-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* Gray-300 */
+            border-radius: 3px;
+        }
+        .category-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* Gray-400 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER: Logo, Search, Cart (Sticky for easy access) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo -->
+                <a href="#" class="text-3xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150">
+                    The Morning Dew 🌅
+                </a>
+                
+                <!-- Desktop Search Bar -->
+                <div class="hidden lg:flex flex-grow max-w-xl mx-8">
+                    <input type="text" id="search-input" placeholder="Search for electronics, apparels, and more..."
+                        class="w-full py-3 px-6 border border-indigo-300 rounded-l-full focus:ring-indigo-500 focus:border-indigo-500 shadow-inner"
+                        onkeydown="if(event.key === 'Enter') filterProducts()">
+                    <button onclick="filterProducts()" 
+                        class="bg-indigo-600 text-white p-3 rounded-r-full hover:bg-indigo-700 transition duration-150 flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </div>
+                <div>
+                <a href="./account.html" class="inline-flex items-center justify-center px-3 py-1 border border-transparent text-lg font-medium rounded-xl shadow-lg text-white bg-amber-500 hover:bg-indigo-700 transition duration-300 transform hover:scale-105">Account</a>
+                </div>
+
+                <!-- Cart Icon -->
+                <button onclick="showFeedback('Cart feature simulated. Items: ' + getCartItemCount(), 'info')" class="relative p-3 text-gray-600 hover:text-amber-500 transition duration-150 bg-gray-100 rounded-full">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full min-w-[20px] min-h-[20px]">0</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Search Bar (Below the main header) -->
+        <div class="lg:hidden px-4 pb-4">
+            <div class="flex">
+                <input type="text" id="mobile-search-input" placeholder="Search for electronics, apparels, and more..."
+                    class="w-full py-2 px-4 border border-indigo-300 rounded-l-lg focus:ring-indigo-500 focus:border-indigo-500 shadow-inner"
+                    onkeydown="if(event.key === 'Enter') filterProducts('mobile-search-input')">
+                <button onclick="filterProducts('mobile-search-input')" 
+                    class="bg-indigo-600 text-white p-2 rounded-r-lg hover:bg-indigo-700 transition duration-150 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATEGORY NAVIGATION BAR -->
+    <nav class="bg-indigo-500 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="category-bar" class="flex overflow-x-auto whitespace-nowrap py-3 space-x-4 category-scroll-container">
+                <!-- Categories will be rendered here by JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+        
+        <!-- Feedback Message Box (Replaces alert()) -->
+        <div id="feedback-box" class="hidden fixed top-2 right-2 w-80 p-4 rounded-lg text-sm z-50 shadow-xl transition-opacity duration-300" role="alert">
+            <p id="feedback-message" class="font-medium"></p>
+        </div>
+
+        <h2 id="current-category-title" class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-amber-500 pb-2">
+            Featured Products
+        </h2>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+            <!-- Products will be dynamically loaded here -->
+            <div id="loading-message" class="col-span-full text-center py-10 text-gray-500 text-xl">Loading products...</div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1: About -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">The Dew</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Help & Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="faqs.html" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="returns.html" class="hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="shipping.html" class="hover:text-white transition">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Shop by Category -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="apparels.html" class="hover:text-white transition" onclick="filterByCategory('Apparels')">Apparels</a></li>
+                        <li><a href="electronics.html" class="hover:text-white transition" onclick="filterByCategory('Electronics')">Electronics</a></li>
+                        <li><a href="grocery.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Grocery</a></li>
+                        <li><a href="accessories.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Accessories</a></li>
+                        <li><a href="homegoods.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Home Goods</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm">Email: wyclifeouruh@gmail.com</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="https://www.facebook.com/share/19rDNfqWu1/" class="w-5 h-5 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.tiktok.com/@thedisciplesmin?is_from_webapp=1&sender_device=pc" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition duration-300 shadow-md" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+                        <a href="https://www.instagram.com/thedisciplesmin?igsh=ZHNsdDZpeGpvcTdr" class="w-5 h-5 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition duration-300 shadow-md" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/disciples_min?t=oMVpd9EATHmK0sm4ClYtqA&s=09" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-blue-800 transition duration-300 shadow-md" title="X (Twitter)"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="www.youtube.com/@WyclifeOuru" class="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300 shadow-md" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B4q1KiFW5SUenL76QYzoOnQ%3D%3D" class="w-5 h-5 flex items-center justify-center bg-blue-800 text-white rounded-full hover:bg-blue-900 transition duration-300 shadow-md" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="https://whatsapp.com/channel/0029VaxYcbH42DcW2rK9wk08" class="w-5 h-5 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 shadow-md" title="WhatsApp Channel"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 The Morning Dew Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- MOCK DATA ---
+        const MOCK_PRODUCTS = [
+            // Apparels
+            { id: 1, name: "Premium Hoodie", category: "Apparels", price: 59.99, imageUrl: "../assets/images/Premium Hoodie.jpg", description: "Heavyweight cotton blend for maximum comfort." },
+            { id: 2, name: "Slim-Fit Jeans", category: "Apparels", price: 79.00, imageUrl: "../assets/images/Slim-Fit Jeans.jpg", description: "Classic denim with a modern slim cut." },
+            
+            // Electronics
+            { id: 3, name: "Noise Cancelling Headphones", category: "Electronics", price: 149.99, imageUrl: "../assets/images/Noise Cancelling Headphones.jpg", description: "Immersive audio experience with deep bass." },
+            { id: 4, name: "Wireless Charging Pad", category: "Electronics", price: 25.50, imageUrl: "../assets/images/Wireless Charging Pad.jpg", description: "15W fast charging, sleek design." },
+
+            // Grocery
+            { id: 5, name: "Artisan Coffee Beans (1kg)", category: "Grocery", price: 18.00, imageUrl: "../assets/images/Artisan Coffee Beans.jpg", description: "Medium roast, ethically sourced Arabica." },
+            { id: 6, name: "Organic Honey (500g)", category: "Grocery", price: 12.50, imageUrl: "../assets/images/Organic Honey.jpg", description: "Natural wildflower honey." },
+            { id: 16, name: "Organic Bananas (Per lb)", category: "Grocery", price: 0.79, imageUrl: "../assets/images/Organic Bananas.jpg", description: "Sweet and ripe, perfect for smoothies or snacking. Source: Fair Trade Certified" },
+            { id: 17, name: "Large Brown Cage-Free Eggs (Dozen)", category: "Grocery", price: 4.50, imageUrl: "../assets/images/Large Brown Cage-Free Eggs.jpg", description: "Freshly laid and responsibly sourced from local farms." },
+            { id: 18, name: "Artisan Whole Wheat Loaf", category: "Grocery", price: 3.99, imageUrl: "../assets/images/artisan Whole Wheat Loaf.jpg", description: "Baked this morning with stone-ground whole wheat flour. No preservatives." },
+            { id: 19, name: "Premium Extra Virgin Olive Oil (500ml)", category: "Grocery", price: 12.99, imageUrl: "../assets/images/Premium Extra Virgin Olive Oil.jpg", description: "First cold press. Perfect for salads and cooking. Rich, fruity flavor." },
+            { id: 20, name: "Morning Roast Ground Coffee (12oz)", category: "Grocery", price: 8.75, imageUrl: "../assets/images/Morning Roast Ground Coffee.jpg", description: "Medium roast, ethically sourced Arabica beans. Rich and smooth flavor." },
+            { id: 21, name: "Wild Caught Salmon Fillets (1.5 lbs)", category: "Grocery", price: 19.99, imageUrl: "../assets/images/Wild Caught Salmon Fillets.jpg", description: "Frozen for freshness. High in Omega-3s. Sustainably sourced." },
+            { id: 22, name: "Eco-Friendly Dish Soap Refill (64oz)", category: "Grocery", price: 7.50, imageUrl: "../assets/images/Eco-Friendly Dish Soap Refill.jpg", description: "NBiodegradable, plant-derived formula. Lemon verbena scent." },
+
+            // Home Goods
+            { id: 7, name: "Smart LED Desk Lamp", category: "Home Goods", price: 79.99, imageUrl: "../assets/images/Smart LED Desk Lamp.jpg", description: "Dimmable light with color temperature control." },
+            { id: 8, name: "Luxury Scented Candle", category: "Home Goods", price: 35.00, imageUrl: "../assets/images/Luxury Scented Candle.jpg", description: "Vanilla & sandalwood fragrance." },
+            { id: 9, name: "Artisan Stoneware Mug Set", category: "Home Goods", price: 45.00, imageUrl: "../assets/images/Artisan Stoneware Mug Set.jpg", description: "Hand-finished with a unique crackle glaze. Microwave and dishwasher safe." },
+            { id: 10, name: "Nordic Bedside Table Lamp", category: "Home Goods", price: 89.99, imageUrl: "../assets/images/Nordic Bedside Table Lamp.jpg", description: "Soft linen shade with a matte ceramic base. Dimmable LED bulb included." },
+            { id: 11, name: "Luxury Chunky Knit Throw", category: "Home Goods", price: 130.00, imageUrl: "../assets/images/Luxury Chunky Knit Throw.jpg", description: "Pure organic cotton, hand-knitted for cozy weight and texture." },
+            { id: 12, name: "Geometric Abstract Canvas Print", category: "Home Goods", price: 99.00, imageUrl: "../assets/images/Geometric Abstract Canvas Print.jpg", description: "High-quality giclée print on stretched canvas. Framed in natural oak wood." },
+            { id: 13, name: "Wi-Fi Enabled Ultrasonic Diffuser", category: "Home Goods", price: 60.00, imageUrl: "../assets/images/Wi-Fi Enabled Ultrasonic Diffuser.jpg", description: "App-controlled scheduling and ambient lighting. Quiet operation and auto shut-off." },
+            { id: 14, name: "Hand-Woven Area Rug", category: "Home Goods", price: 45.00, imageUrl: "../assets/images/Hand-Woven Area Rug.jpg", description: "Natural dyed cotton with geometric patterning. Soft texture, ideal for living rooms." },
+            { id: 15, name: "Acacia Wood Charcuterie Board", category: "Home Goods", price: 45.00, imageUrl: "../assets/images/Acacia Wood Charcuterie Board.jpg", description: "urable, food-safe hardwood, perfect for entertaining or display." },
+
+            // Accessories
+            { id: 15, name: "Leather Smartwatch Strap", category: "Accessories", price: 35.00, imageUrl: "../assets/images/Leather Smartwatch Strap.jpg", description: "Elegant genuine leather strap, various colors." },
+            { id: 16, name: "Portable Power Bank (20000mAh)", category: "Accessories", price: 49.99, imageUrl: "../assets/images/Portable Power Bank.jpg", description: "High-capacity battery for multiple charges." },
+
+            // More Apparels
+            { id: 11, name: "Running Sneakers", category: "Apparels", price: 110.00, imageUrl: "../assets/images/Running Sneakers.jpg", description: "Lightweight and cushioned for long runs." },
+            
+            // More Electronics (Featured Deal)
+            { id: 12, name: "Ultra HD Monitor 27''", category: "Electronics", price: 399.00, imageUrl: "../assets/images/Ultra HD Monitor.jpg", description: "Crystal clear display for work and gaming." },
+        ];
+
+        const CATEGORIES = ["All Products", "Apparels", "Electronics", "Grocery", "Home Goods", "Accessories"];
+
+        // --- STATE MANAGEMENT (Simulated Cart) ---
+        let cart = JSON.parse(localStorage.getItem('dewCart')) || [];
+
+        // --- UTILITY FUNCTIONS ---
+        
+        /**
+         * Custom feedback function instead of alert()
+         * @param {string} message - The message to display.
+         * @param {string} type - 'success', 'error', or 'info'.
+         */
+        function showFeedback(message, type) {
+            const box = document.getElementById('feedback-box');
+            const msgElement = document.getElementById('feedback-message');
+            
+            // Set message and remove existing color classes/visibility
+            msgElement.textContent = message;
+            box.classList.remove('hidden', 'bg-red-100', 'text-red-800', 'bg-green-100', 'text-green-800', 'bg-blue-100', 'text-blue-800', 'opacity-0');
+            box.classList.add('opacity-100');
+
+            // Apply new classes based on type
+            if (type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-800');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-100', 'text-green-800');
+            } else { // info
+                box.classList.add('bg-blue-100', 'text-blue-800');
+            }
+
+            // Show the box
+            box.classList.remove('hidden');
+
+            // Hide after 4 seconds with fade-out
+            setTimeout(() => {
+                box.classList.replace('opacity-100', 'opacity-0');
+            }, 3500);
+
+            setTimeout(() => {
+                 box.classList.add('hidden');
+            }, 4000);
+        }
+
+        function getCartItemCount() {
+            return cart.reduce((total, item) => total + item.quantity, 0);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').textContent = getCartItemCount();
+        }
+
+        // --- PRODUCT RENDERING ---
+
+        /**
+         * Renders the product grid based on a filtered array.
+         * @param {Array} productsToRender - The array of products to display.
+         */
+        function renderProducts(productsToRender) {
+            const grid = document.getElementById('product-grid');
+            const loadingMessage = document.getElementById('loading-message');
+            grid.innerHTML = ''; // Clear existing products
+            
+            if (productsToRender.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-10 text-xl text-gray-500">No products found for this selection.</div>';
+                return;
+            }
+
+            productsToRender.forEach(product => {
+                // Determine category color for the background
+                let categoryColor = 'bg-gray-100';
+                switch(product.category) {
+                    case 'Electronics': categoryColor = 'bg-blue-50'; break;
+                    case 'Apparels': categoryColor = 'bg-green-50'; break;
+                    case 'Grocery': categoryColor = 'bg-amber-50'; break;
+                    case 'Home Goods': categoryColor = 'bg-indigo-50'; break;
+                    case 'Accessories': categoryColor = 'bg-pink-50'; break;
+                }
+
+                const productHtml = `
+                    <div class="product-card ${categoryColor} rounded-xl overflow-hidden shadow-lg flex flex-col justify-between">
+                        <!-- Image Area -->
+                        <div class="p-2 aspect-square">
+                            <img src="${product.imageUrl}" alt="${product.name}" 
+                                 class="w-full h-full object-cover rounded-lg" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/94A3B8/ffffff?text=Image+Error'">
+                        </div>
+
+                        <!-- Details -->
+                        <div class="p-3 sm:p-4 flex flex-col flex-grow">
+                            <p class="text-xs font-semibold text-indigo-600 mb-1 uppercase">${product.category}</p>
+                            <h3 class="text-md font-bold mb-1 truncate" title="${product.name}">${product.name}</h3>
+                            <p class="text-xs text-gray-500 mb-3">${product.description.substring(0, 40)}...</p>
+                            
+                            <!-- Price -->
+                            <div class="mt-auto">
+                                <p class="text-xl font-extrabold text-red-600">
+                                    $${product.price.toFixed(2)}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Add to Cart Button -->
+                        <button onclick="addToCart(${product.id})"
+                            class="w-full py-2 bg-amber-500 text-white font-semibold hover:bg-amber-600 transition duration-150 rounded-b-xl focus:ring-4 focus:ring-amber-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', productHtml);
+            });
+            // Hide loading message once products are rendered
+            if (loadingMessage) loadingMessage.remove();
+        }
+
+        // --- CATEGORY FILTERING ---
+
+        /**
+         * Filters the products based on the selected category and search term.
+         * @param {string | null} category - The category to filter by, or null/undefined for current selection.
+         */
+        function filterByCategory(category = null) {
+            let activeCategory = category;
+            
+            // If category is null, find the currently active category from buttons
+            if (!category) {
+                const activeBtn = document.querySelector('.category-button.active');
+                if (activeBtn) {
+                    activeCategory = activeBtn.dataset.category;
+                } else {
+                    activeCategory = 'All Products';
+                }
+            }
+
+            // Update category bar title
+            document.getElementById('current-category-title').textContent = activeCategory === 'All Products' ? 'Featured Products' : activeCategory + ' Deals';
+
+            // Filter logic
+            const filteredProducts = MOCK_PRODUCTS.filter(product => {
+                const categoryMatch = activeCategory === 'All Products' || product.category === activeCategory;
+                return categoryMatch;
+            });
+            
+            // Update active button styling
+            document.querySelectorAll('.category-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const newActiveBtn = document.querySelector(`.category-button[data-category="${activeCategory}"]`);
+            if (newActiveBtn) {
+                newActiveBtn.classList.add('active');
+            }
+
+            renderProducts(filteredProducts);
+        }
+        
+        window.filterByCategory = filterByCategory; // Expose to global scope for HTML onclick
+
+        // --- SEARCH FUNCTIONALITY ---
+
+        /**
+         * Filters products based on search input and the currently active category.
+         * @param {string} inputId - The ID of the search input field to read from ('search-input' or 'mobile-search-input').
+         */
+        function filterProducts(inputId = 'search-input') {
+            const searchInput = document.getElementById(inputId);
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query.length < 2 && query.length > 0) {
+                 showFeedback("Please enter at least 2 characters to search.", 'info');
+                 return;
+            }
+
+            // Get the currently active category (since we don't switch categories on search)
+            const activeCategory = document.querySelector('.category-button.active').dataset.category;
+
+            const filteredProducts = MOCK_PRODUCTS.filter(product => {
+                const categoryMatch = activeCategory === 'All Products' || product.category === activeCategory;
+                const searchMatch = product.name.toLowerCase().includes(query) || 
+                                    product.description.toLowerCase().includes(query) ||
+                                    product.category.toLowerCase().includes(query);
+                
+                return categoryMatch && searchMatch;
+            });
+            
+            // Update title based on search
+            let title = `Results for: "${query}"`;
+            if (activeCategory !== 'All Products') {
+                 title += ` in ${activeCategory}`;
+            }
+            if (query === '') {
+                 title = activeCategory === 'All Products' ? 'Featured Products' : activeCategory + ' Deals';
+            }
+            document.getElementById('current-category-title').textContent = title;
+
+            renderProducts(filteredProducts);
+        }
+        window.filterProducts = filterProducts; // Expose to global scope for HTML onclick
+
+
+        // --- CART LOGIC ---
+        
+        /**
+         * Adds a product to the cart or increments its quantity.
+         * @param {number} productId - The ID of the product to add.
+         */
+        function addToCart(productId) {
+            const product = MOCK_PRODUCTS.find(p => p.id === productId);
+
+            if (!product) {
+                showFeedback("Error: Product not found.", 'error');
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+                showFeedback(`${product.name} quantity increased to ${existingItem.quantity}.`, 'info');
+            } else {
+                cart.push({ id: productId, name: product.name, price: product.price, quantity: 1 });
+                showFeedback(`${product.name} added to cart!`, 'success');
+            }
+
+            localStorage.setItem('dewCart', JSON.stringify(cart));
+            updateCartCount();
+        }
+        window.addToCart = addToCart; // Expose to global scope for HTML onclick
+
+
+        // --- INITIALIZATION ---
+        
+        /**
+         * Renders the category buttons on load.
+         */
+        function renderCategories() {
+            const categoryBar = document.getElementById('category-bar');
+            
+            CATEGORIES.forEach((cat, index) => {
+                const isActive = index === 0 ? 'active' : '';
+                const buttonHtml = `
+                    <button data-category="${cat}" onclick="filterByCategory('${cat}')" 
+                            class="category-button ${isActive} flex-shrink-0 px-4 py-2 text-sm font-semibold text-white rounded-full hover:bg-indigo-600 transition duration-150 bg-indigo-400">
+                        ${cat}
+                    </button>
+                `;
+                categoryBar.insertAdjacentHTML('beforeend', buttonHtml);
+            });
+
+            // Set the 'All Products' button as active initially
+            const allProductsBtn = categoryBar.querySelector('.category-button');
+            if(allProductsBtn) {
+                allProductsBtn.classList.add('active');
+            }
+        }
+
+
+        // Execute initial setup on window load
+        window.onload = function() {
+            renderCategories();
+            filterByCategory('All Products'); // Load all products initially
+            updateCartCount(); // Load initial cart count
+        };
+
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

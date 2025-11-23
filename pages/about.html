@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Morning Dew Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .hero-image {
+            background-image: url('../assets/images/About\ us.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-icon {
+            color: #3b82f6; /* Indigo-500 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER (Simplified for internal pages) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="home.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150">
+                    The Morning Dew 🌅
+                </a>
+                
+                <!-- Navigation Links -->
+                <nav class="flex space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition">Shop</a>
+                    <a href="#" class="text-indigo-600 font-bold border-b-2 border-indigo-600">About Us</a>
+                    <!-- Cart (Simulated) -->
+                    <a href="#" onclick="showFeedback('This is a static link! Go to the Shop page for cart.', 'info')" class="relative p-1 text-gray-600 hover:text-amber-500 transition duration-150">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero-image h-64 flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative text-center">
+            <h1 class="text-5xl font-black text-white mb-2 tracking-tight">Our Story</h1>
+            <p class="text-xl text-indigo-200 font-medium">Fresh goods, honest prices, delivered with care.</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT - ABOUT US -->
+    <main class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+
+        <!-- Section 1: Our Mission -->
+        <section class="mb-12 md:flex md:space-x-12 items-center">
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-4">
+                    The Dew Difference
+                </h2>
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    The Morning Dew Store was founded on a simple principle: to bring quality goods from every category directly to your doorstep with unmatched reliability. In a world of fleeting trends, we focus on providing lasting value, whether it's a piece of durable apparel, cutting-edge electronics, fresh groceries, comfortable home goods, or essential accessories.
+                </p>
+                <p class="text-lg font-semibold text-indigo-600">
+                    We believe in clarity, integrity, and the freshness of a new day—every day.
+                </p>
+            </div>
+            <div class="md:w-1/2 mt-8 md:mt-0">
+                <img src="https://placehold.co/600x400/3B82F6/ffffff?text=Our+Mission+Visual" alt="Mission" class="rounded-xl shadow-2xl object-cover w-full">
+            </div>
+        </section>
+
+        <hr class="my-10 border-indigo-200">
+
+        <!-- Section 2: Core Values -->
+        <section class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-8">Our Core Values</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <!-- Value 1: Quality -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <svg class="w-10 h-10 mx-auto mb-4 section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-xl font-bold mb-2">Unwavering Quality</h3>
+                    <p class="text-gray-500 text-sm">Every product, from a basic accessory to a premium electronic device, undergoes strict quality checks.</p>
+                </div>
+                <!-- Value 2: Trust -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <svg class="w-10 h-10 mx-auto mb-4 section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <h3 class="text-xl font-bold mb-2">Total Transparency</h3>
+                    <p class="text-gray-500 text-sm">We ensure clear pricing, honest product descriptions, and ethical sourcing throughout our supply chain.</p>
+                </div>
+                <!-- Value 3: Community -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <svg class="w-10 h-10 mx-auto mb-4 section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <h3 class="text-xl font-bold mb-2">Local Focus</h3>
+                    <p class="text-gray-500 text-sm">Supporting local businesses and reducing our environmental footprint is central to our operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Meet the Categories -->
+        <section class="bg-white p-8 rounded-xl shadow-2xl">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">Our Departments</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                
+                <div class="text-center p-3 rounded-lg bg-red-50">
+                    <p class="text-4xl">👕</p>
+                    <p class="font-semibold text-sm mt-2 text-red-600">Apparels</p>
+                </div>
+                <div class="text-center p-3 rounded-lg bg-blue-50">
+                    <p class="text-4xl">💻</p>
+                    <p class="font-semibold text-sm mt-2 text-blue-600">Electronics</p>
+                </div>
+                <div class="text-center p-3 rounded-lg bg-amber-50">
+                    <p class="text-4xl">🥦</p>
+                    <p class="font-semibold text-sm mt-2 text-amber-600">Grocery</p>
+                </div>
+                <div class="text-center p-3 rounded-lg bg-green-50">
+                    <p class="text-4xl">🛋️</p>
+                    <p class="font-semibold text-sm mt-2 text-green-600">Home Goods</p>
+                </div>
+                <div class="text-center p-3 rounded-lg bg-indigo-50">
+                    <p class="text-4xl">🔗</p>
+                    <p class="font-semibold text-sm mt-2 text-indigo-600">Accessories</p>
+                </div>
+                <div class="text-center p-3 rounded-lg bg-pink-50">
+                    <p class="text-4xl">✨</p>
+                    <p class="font-semibold text-sm mt-2 text-pink-600">Featured</p>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="index.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition duration-150 focus:ring-4 focus:ring-indigo-300">
+                    Start Shopping Now
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (Matching the index page for consistency) -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1: About -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">The Dew</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Help & Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="faqs.html" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="returns.html" class="hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="shipping.html" class="hover:text-white transition">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Shop by Category -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="apparels.html" class="hover:text-white transition" onclick="filterByCategory('Apparels')">Apparels</a></li>
+                        <li><a href="electronics.html" class="hover:text-white transition" onclick="filterByCategory('Electronics')">Electronics</a></li>
+                        <li><a href="grocery.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Grocery</a></li>
+                        <li><a href="accessories.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Accessories</a></li>
+                        <li><a href="homegoods.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Home Goods</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm">Email: wyclifeouruh@gmail.com</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="https://www.facebook.com/share/19rDNfqWu1/" class="w-5 h-5 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.tiktok.com/@thedisciplesmin?is_from_webapp=1&sender_device=pc" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition duration-300 shadow-md" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+                        <a href="https://www.instagram.com/thedisciplesmin?igsh=ZHNsdDZpeGpvcTdr" class="w-5 h-5 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition duration-300 shadow-md" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/disciples_min?t=oMVpd9EATHmK0sm4ClYtqA&s=09" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-blue-800 transition duration-300 shadow-md" title="X (Twitter)"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="www.youtube.com/@WyclifeOuru" class="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300 shadow-md" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B4q1KiFW5SUenL76QYzoOnQ%3D%3D" class="w-5 h-5 flex items-center justify-center bg-blue-800 text-white rounded-full hover:bg-blue-900 transition duration-300 shadow-md" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="https://whatsapp.com/channel/0029VaxYcbH42DcW2rK9wk08" class="w-5 h-5 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 shadow-md" title="WhatsApp Channel"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 The Morning Dew Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feedback Function (Needed for the simulated cart click) -->
+    <div id="feedback-box" class="hidden fixed top-2 right-2 w-80 p-4 rounded-lg text-sm z-50 shadow-xl transition-opacity duration-300" role="alert">
+        <p id="feedback-message" class="font-medium"></p>
+    </div>
+    
+    <script>
+        // Simple feedback function copied from the main page to handle cart/link clicks gracefully
+        function showFeedback(message, type) {
+            const box = document.getElementById('feedback-box');
+            const msgElement = document.getElementById('feedback-message');
+            
+            msgElement.textContent = message;
+            box.classList.remove('hidden', 'bg-red-100', 'text-red-800', 'bg-green-100', 'text-green-800', 'bg-blue-100', 'text-blue-800', 'opacity-0');
+            box.classList.add('opacity-100');
+
+            if (type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-800');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-100', 'text-green-800');
+            } else { 
+                box.classList.add('bg-blue-100', 'text-blue-800');
+            }
+
+            box.classList.remove('hidden');
+
+            setTimeout(() => {
+                box.classList.replace('opacity-100', 'opacity-0');
+            }, 3500);
+
+            setTimeout(() => {
+                 box.classList.add('hidden');
+            }, 4000);
+        }
+        window.showFeedback = showFeedback; // Expose to global scope for HTML onclick
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

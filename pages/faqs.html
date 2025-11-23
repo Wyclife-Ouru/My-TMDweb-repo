@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | The Morning Dew Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        /* Custom styles for the accordion toggle */
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out;
+        }
+        .accordion-header:hover {
+            background-color: #f0f4ff; /* indigo-50 */
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+        .accordion-content.active {
+            max-height: 500px; /* Adjust this value if content is very long */
+            padding-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER (Navigation) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo - LINKS TO HOME PAGE -->
+                <a href="home.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2">
+                    The Morning Dew 🌅
+                </a>
+                
+                <!-- Navigation Links -->
+                <nav class="flex space-x-6 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">Shop</a>
+                    <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 p-2 rounded-md hover:bg-gray-50">Contact</a>
+                    
+                    <!-- Cart (Simulated Link) -->
+                    <button onclick="showFeedback('This is a static link! Go to the Shop page for cart.', 'info')" 
+                        class="relative p-2 text-gray-600 hover:text-amber-500 transition duration-150 rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amber-500" 
+                        aria-label="View Shopping Cart">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="bg-indigo-50 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-black text-indigo-900 mb-3">
+                Frequently Asked Questions
+            </h1>
+            <p class="text-xl text-indigo-600">
+                Find quick answers to our most common questions about orders, shipping, and products.
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT - FAQ ACCORDION -->
+    <main class="max-w-4xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        
+        <div id="faq-container" class="space-y-6">
+            
+            <!-- Category: Ordering -->
+            <h2 class="text-3xl font-bold text-gray-900 mt-8 mb-4 border-b pb-2 text-indigo-700">Ordering & Payments</h2>
+
+            <!-- FAQ 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                <div class="accordion-header p-6 flex justify-between items-center" onclick="toggleAccordion(1)">
+                    <h3 class="text-lg font-semibold text-gray-900">1. What payment methods do you accept?</h3>
+                    <svg id="icon-1" class="w-5 h-5 text-indigo-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="content-1" class="accordion-content px-6">
+                    <div class="pt-4 border-t border-gray-100 text-gray-600">
+                        <p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and Apple Pay. All transactions are securely processed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                <div class="accordion-header p-6 flex justify-between items-center" onclick="toggleAccordion(2)">
+                    <h3 class="text-lg font-semibold text-gray-900">2. Can I modify or cancel my order after placing it?</h3>
+                    <svg id="icon-2" class="w-5 h-5 text-indigo-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="content-2" class="accordion-content px-6">
+                    <div class="pt-4 border-t border-gray-100 text-gray-600">
+                        <p>We process orders quickly! If you need to modify or cancel, please contact us within <b>2 hours</b> of placing your order using our contact form or calling us at <a href="tel:+25412345678" class="text-indigo-600 hover:underline">+254 123 456 78</a>. Once an order is shipped, we cannot make changes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: Shipping -->
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4 border-b pb-2 text-indigo-700">Shipping & Delivery</h2>
+
+            <!-- FAQ 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                <div class="accordion-header p-6 flex justify-between items-center" onclick="toggleAccordion(3)">
+                    <h3 class="text-lg font-semibold text-gray-900">3. How long does shipping take?</h3>
+                    <svg id="icon-3" class="w-5 h-5 text-indigo-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="content-3" class="accordion-content px-6">
+                    <div class="pt-4 border-t border-gray-100 text-gray-600">
+                        <p>Shipping times depend on your location and the shipping method chosen at checkout. Standard domestic shipping typically takes 3-7 business days. International shipping can take 7-21 business days.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 4 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                <div class="accordion-header p-6 flex justify-between items-center" onclick="toggleAccordion(4)">
+                    <h3 class="text-lg font-semibold text-gray-900">4. Do you ship internationally?</h3>
+                    <svg id="icon-4" class="w-5 h-5 text-indigo-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="content-4" class="accordion-content px-6">
+                    <div class="pt-4 border-t border-gray-100 text-gray-600">
+                        <p>Yes, we offer worldwide shipping! Please note that international customers are responsible for any customs duties, taxes, or brokerage fees incurred upon delivery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: Returns & Exchanges -->
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4 border-b pb-2 text-indigo-700">Returns & Exchanges</h2>
+
+            <!-- FAQ 5 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                <div class="accordion-header p-6 flex justify-between items-center" onclick="toggleAccordion(5)">
+                    <h3 class="text-lg font-semibold text-gray-900">5. What is your return policy?</h3>
+                    <svg id="icon-5" class="w-5 h-5 text-indigo-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="content-5" class="accordion-content px-6">
+                    <div class="pt-4 border-t border-gray-100 text-gray-600">
+                        <p>We offer a 30-day money-back guarantee on all products, provided they are unused and in their original packaging. For returns, please visit our dedicated Returns Portal linked in your order confirmation email.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Call to action/Footer contact link -->
+    <div class="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8 text-center bg-white rounded-xl shadow-lg mb-12">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Still have questions?</h3>
+        <p class="text-gray-600 mb-6">If you couldn't find the answer you were looking for, don't hesitate to reach out to our support team.</p>
+        <a href="contact.html" 
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-amber-500 hover:bg-amber-600 transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+            Contact Support Now
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1: About -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">The Dew</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Help & Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="faqs.html" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="returns.html" class="hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="shipping.html" class="hover:text-white transition">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Shop by Category -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="apparels.html" class="hover:text-white transition" onclick="filterByCategory('Apparels')">Apparels</a></li>
+                        <li><a href="electronics.html" class="hover:text-white transition" onclick="filterByCategory('Electronics')">Electronics</a></li>
+                        <li><a href="grocery.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Grocery</a></li>
+                        <li><a href="accessories.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Accessories</a></li>
+                        <li><a href="homegoods.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Home Goods</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm">Email: wyclifeouruh@gmail.com</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="https://www.facebook.com/share/19rDNfqWu1/" class="w-5 h-5 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.tiktok.com/@thedisciplesmin?is_from_webapp=1&sender_device=pc" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition duration-300 shadow-md" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+                        <a href="https://www.instagram.com/thedisciplesmin?igsh=ZHNsdDZpeGpvcTdr" class="w-5 h-5 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition duration-300 shadow-md" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/disciples_min?t=oMVpd9EATHmK0sm4ClYtqA&s=09" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-blue-800 transition duration-300 shadow-md" title="X (Twitter)"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="www.youtube.com/@WyclifeOuru" class="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300 shadow-md" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B4q1KiFW5SUenL76QYzoOnQ%3D%3D" class="w-5 h-5 flex items-center justify-center bg-blue-800 text-white rounded-full hover:bg-blue-900 transition duration-300 shadow-md" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="https://whatsapp.com/channel/0029VaxYcbH42DcW2rK9wk08" class="w-5 h-5 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 shadow-md" title="WhatsApp Channel"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 The Morning Dew Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        /**
+         * Toggles the visibility of an accordion content block.
+         * @param {number} id - The unique ID of the FAQ item.
+         */
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+
+            // Toggle active state
+            content.classList.toggle('active');
+
+            // Rotate the arrow icon
+            if (content.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        window.toggleAccordion = toggleAccordion;
+    
+        // Simple feedback function (copied from contact page for continuity)
+        function showFeedback(message, type) {
+            const box = document.getElementById('feedback-box');
+            if (!box) {
+                // Create a temporary feedback box if it doesn't exist
+                const tempBox = document.createElement('div');
+                tempBox.id = 'feedback-box';
+                tempBox.classList.add('fixed', 'top-4', 'right-4', 'w-80', 'p-4', 'rounded-xl', 'text-sm', 'z-50', 'shadow-2xl', 'transition-opacity', 'duration-300', 'opacity-0');
+                tempBox.innerHTML = `<p id="feedback-message" class="font-medium"></p>`;
+                document.body.appendChild(tempBox);
+                
+            }
+            const actualBox = document.getElementById('feedback-box');
+            const msgElement = document.getElementById('feedback-message');
+            
+            // Reset classes
+            actualBox.className = 'fixed top-4 right-4 w-80 p-4 rounded-xl text-sm z-50 shadow-2xl transition-opacity duration-300 opacity-0';
+            
+            msgElement.textContent = message;
+
+            if (type === 'error') {
+                actualBox.classList.add('bg-red-100', 'text-red-800');
+            } else if (type === 'success') {
+                actualBox.classList.add('bg-green-100', 'text-green-800');
+            } else { // info
+                actualBox.classList.add('bg-blue-100', 'text-blue-800');
+            }
+
+            // Show and fade in
+            actualBox.classList.remove('opacity-0');
+            actualBox.classList.add('opacity-100');
+
+            setTimeout(() => {
+                // Fade out
+                actualBox.classList.replace('opacity-100', 'opacity-0');
+            }, 3000);
+
+            // Give time for fade out before hiding
+            setTimeout(() => {
+                 actualBox.classList.add('hidden');
+            }, 3500);
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

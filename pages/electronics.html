@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics | The Morning Dew Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- HEADER (Navigation) - Consistent with other pages -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="home.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2">
+                    The Morning Dew 🌅
+                </a>
+                
+                <!-- Navigation Links -->
+                <nav class="flex space-x-6 items-center">
+                    <a href="#" class="text-indigo-600 hover:text-indigo-700 font-bold transition duration-150 p-2 rounded-md bg-indigo-50">Electronics</a>
+                                        
+                    <!-- Cart (Simulated Link) -->
+                    <button onclick="showFeedback('Adding item to cart... (Simulated)', 'success')" 
+                        class="relative p-2 text-gray-600 hover:text-amber-500 transition duration-150 rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amber-500" 
+                        aria-label="View Shopping Cart">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO SECTION -->
+    <div class="bg-indigo-700 py-16 mb-12 shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-extrabold text-white mb-3">
+                The Electronics Vault
+            </h1>
+            <p class="text-xl text-indigo-200">
+                Cutting-edge tech, designed for tomorrow. Free shipping on all tech accessories!
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN PRODUCT GRID -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+
+        <!-- Filters/Sort (Placeholder for functionality) -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 p-4 bg-white rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 sm:mb-0">Featured Products (8)</h2>
+            <div class="flex space-x-4">
+                <select class="p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+                    <option>Sort By: Best Sellers</option>
+                    <option>Price: Low to High</option>
+                    <option>Newest Arrivals</option>
+                </select>
+                <button onclick="showFeedback('Filter functionality is pending!', 'info')" 
+                    class="bg-amber-500 text-white font-medium px-4 py-2 rounded-lg shadow-md hover:bg-amber-600 transition duration-150 text-sm">
+                    <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414A1 1 0 0012 16.586V19l2 2v1h-8v-1l2-2v-2.414a1 1 0 00-.293-.707L4.293 7.293A1 1 0 014 6.586V4z"></path></svg>
+                    Filters
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Product Card 1: Noise-Cancelling Headphones -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/AuraMax Noise-Cancelling Headphones.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/ffffff?text=Placeholder';" alt="Noise-Cancelling Headphones" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Audio</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">AuraMax Noise-Cancelling Headphones</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Industry-leading cancellation with 40-hour battery life. Perfect for travel.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$299.99</span>
+                        <button onclick="addToCart('AuraMax Headphones')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2: Smartwatch -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/Quantum Smartwatch.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ffffff?text=Placeholder';" alt="Quantum Smartwatch" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Wearable</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Quantum Smartwatch V3</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">GPS, heart rate monitoring, and 7-day battery life in a slim aluminum case.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$149.00</span>
+                        <button onclick="addToCart('Quantum Smartwatch')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3: Portable Charger -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/MegaBoost 20,000mAh Power Bank.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4f46e5/ffffff?text=Placeholder';" alt="MegaBoost Power Bank" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Accessory</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">MegaBoost 20,000mAh Power Bank</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Charge your phone up to 4 times. Dual USB-C and USB-A ports. Fast charging.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$49.50</span>
+                        <button onclick="addToCart('MegaBoost Power Bank')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4: 4K Webcam -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/StreamCam 4K Ultra HD Webcam.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Placeholder';" alt="StreamCam 4K" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Streaming</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">StreamCam 4K Ultra HD Webcam</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Crystal clear video conferencing and streaming quality. Autofocus lens.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$89.99</span>
+                        <button onclick="addToCart('StreamCam 4K')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 5: Mechanical Keyboard -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/Tactica Mechanical Keyboard.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9ca3af/ffffff?text=Placeholder';" alt="Mechanical Keyboard" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Input</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">Tactica Mechanical Keyboard</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Tactile brown switches, fully customizable RGB backlighting, and aluminum frame.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$120.00</span>
+                        <button onclick="addToCart('Tactica Keyboard')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 6: Wireless Mouse -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/ErgoGlide Wireless Mouse.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/10b981/ffffff?text=Placeholder';" alt="Ergonomic Wireless Mouse" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Input</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">ErgoGlide Wireless Mouse</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Vertical ergonomic design reduces wrist strain. Adjustable DPI up to 16,000.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$55.99</span>
+                        <button onclick="addToCart('ErgoGlide Mouse')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 7: Portable Bluetooth Speaker -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/PocketBoom Mini Bluetooth Speaker.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/ef4444/ffffff?text=Placeholder';" alt="PocketBoom Speaker" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Audio</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">PocketBoom Mini Bluetooth Speaker</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Waterproof and rugged. Huge sound in a tiny package. 10-hour playback.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$35.00</span>
+                        <button onclick="addToCart('PocketBoom Speaker')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 8: Mesh Router -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <!-- Placeholder Image -->
+                <img src="../assets/images/HomeMesh Wi-Fi System .jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1c1f2e/ffffff?text=Placeholder';" alt="HomeMesh Wi-Fi System" class="w-full h-48 object-cover">
+                
+                <div class="p-5">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">Network</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1 truncate">HomeMesh Wi-Fi System (3-pack)</h3>
+                    <p class="text-sm text-gray-500 mb-3 line-clamp-2">Eliminate dead zones with seamless whole-home Wi-Fi coverage up to 5,000 sq ft.</p>
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-extrabold text-amber-600">$189.99</span>
+                        <button onclick="addToCart('HomeMesh Router')" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-md flex items-center text-sm">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End Product Grid -->
+
+    </main>
+
+    <!-- FOOTER - Consistent with other pages -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1: About -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">The Dew</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Help & Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="faqs.html" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="returns.html" class="hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="shipping.html" class="hover:text-white transition">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Shop by Category -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="apparels.html" class="hover:text-white transition" onclick="filterByCategory('Apparels')">Apparels</a></li>
+                        <li><a href="electronics.html" class="hover:text-white transition" onclick="filterByCategory('Electronics')">Electronics</a></li>
+                        <li><a href="grocery.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Grocery</a></li>
+                        <li><a href="accessories.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Accessories</a></li>
+                        <li><a href="homegoods.html" class="hover:text-white transition" onclick="filterByCategory('Grocery')">Home Goods</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-4 text-amber-500">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm">Email: wyclifeouruh@gmail.com</p>
+                    <div class="flex space-x-3 mt-3">
+                        <a href="https://www.facebook.com/share/19rDNfqWu1/" class="w-5 h-5 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.tiktok.com/@thedisciplesmin?is_from_webapp=1&sender_device=pc" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition duration-300 shadow-md" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+                        <a href="https://www.instagram.com/thedisciplesmin?igsh=ZHNsdDZpeGpvcTdr" class="w-5 h-5 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition duration-300 shadow-md" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/disciples_min?t=oMVpd9EATHmK0sm4ClYtqA&s=09" class="w-5 h-5 flex items-center justify-center bg-black text-white rounded-full hover:bg-blue-800 transition duration-300 shadow-md" title="X (Twitter)"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="www.youtube.com/@WyclifeOuru" class="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300 shadow-md" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+                        <a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B4q1KiFW5SUenL76QYzoOnQ%3D%3D" class="w-5 h-5 flex items-center justify-center bg-blue-800 text-white rounded-full hover:bg-blue-900 transition duration-300 shadow-md" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="https://whatsapp.com/channel/0029VaxYcbH42DcW2rK9wk08" class="w-5 h-5 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300 shadow-md" title="WhatsApp Channel"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 The Morning Dew Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple feedback function (for simulated actions like 'Add to Cart')
+        function showFeedback(message, type) {
+            const box = document.createElement('div');
+            box.id = 'feedback-box';
+            box.classList.add('fixed', 'top-4', 'right-4', 'w-80', 'p-4', 'rounded-xl', 'text-sm', 'z-50', 'shadow-2xl', 'transition-opacity', 'duration-300', 'opacity-100');
+            box.innerHTML = `<p id="feedback-message" class="font-medium">${message}</p>`;
+            document.body.appendChild(box);
+
+            // Set dynamic background/text colors
+            if (type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-800');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-100', 'text-green-800');
+            } else { // info
+                box.classList.add('bg-blue-100', 'text-blue-800');
+            }
+            
+            // Fade out and remove
+            setTimeout(() => {
+                box.classList.replace('opacity-100', 'opacity-0');
+            }, 3000);
+
+            setTimeout(() => {
+                 box.remove();
+            }, 3500);
+        }
+
+        function addToCart(productName) {
+            showFeedback(`${productName} added to cart!`, 'success');
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
