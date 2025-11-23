@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7; /* Light gray background, similar to twd's page */
+            background-color: #f7f7f7; /* Light gray background */
         }
         .twd-indigo {
             background-color: #3b82f6;
@@ -34,7 +34,7 @@
          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo - LINKS TO HOME PAGE -->
-                <a href="./account.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2">
+                <a href="./home.html" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2">
                     The Morning Dew 🌅
                 </a>
 
@@ -51,122 +51,12 @@
             </div>
         </div>
     </header>
-
-    <!-- Firebase SDK Imports and Setup -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        
-        // --- GLOBAL VARIABLES ---
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        
-        let app = null;
-        let auth = null;
-        let db = null;
-        let userId = null;
-
-        /**
-         * Initializes Firebase and authenticates the user.
-         */
-        async function initializeFirebase() {
-            if (!firebaseConfig) {
-                console.error("Firebase config not available.");
-                document.getElementById('feedback-message').textContent = 'Error: Firebase configuration missing.';
-                return;
-            }
-
-            try {
-                // 1. Initialize App
-                app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
-
-                // 2. Authentication
-                // Use custom token if available, otherwise sign in anonymously
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-
-                // 3. Auth State Change Listener (Sets up UI after auth completes)
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        console.log("Firebase Auth Ready. User ID:", userId);
-                        // Update UI to show logged-in state (simulated)
-                        document.getElementById('feedback-message').textContent = `Authenticated successfully! User ID: ${userId}`;
-                        document.getElementById('login-form').classList.add('hidden');
-                        document.getElementById('welcome-message').classList.remove('hidden');
-                        document.getElementById('user-id-display').textContent = userId;
-
-                    } else {
-                        userId = null;
-                        console.log("No user signed in (or sign-in failed).");
-                        document.getElementById('feedback-message').textContent = 'Please log in or sign up.';
-                    }
-                });
-
-            } catch (error) {
-                console.error("Firebase initialization or sign-in failed:", error);
-                document.getElementById('feedback-message').textContent = `Authentication failed: ${error.message}`;
-            }
-        }
-
-        /**
-         * Simulates a login action. In a real app, this would use email/password or provider login.
-         */
-        window.handleLogin = function(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            if (!email || !password) {
-                showFeedback('Please enter both email and password.', 'error');
-                return;
-            }
-
-            // Simulate a successful login with a delay
-            document.getElementById('login-btn').textContent = 'Logging in...';
-            document.getElementById('login-btn').disabled = true;
-
-            setTimeout(() => {
-                showFeedback(`Simulated login success for ${email}. You are now authenticated (as an anonymous user in this demo).`, 'success');
-                // The actual authentication is handled by the onAuthStateChanged listener after the initial token/anonymous sign-in.
-                document.getElementById('login-btn').textContent = 'Login';
-                document.getElementById('login-btn').disabled = false;
-            }, 1500);
-        }
-
-        /**
-         * Displays a simple feedback message.
-         */
-        function showFeedback(message, type) {
-            const box = document.getElementById('feedback-box');
-            const messageEl = document.getElementById('feedback-message');
-            messageEl.textContent = message;
-
-            box.className = 'p-3 rounded-lg text-center mt-4';
-            if (type === 'error') {
-                box.classList.add('bg-red-100', 'text-red-700');
-            } else if (type === 'success') {
-                box.classList.add('bg-green-100', 'text-green-700');
-            } else {
-                box.classList.add('bg-gray-200', 'text-gray-800');
-            }
-        }
-
-        // Initialize Firebase on window load
-        window.addEventListener('load', initializeFirebase);
-    </script>
+    
 
     <!-- MAIN LOGIN CONTAINER -->
     <div class="max-w-4xl w-full mx-auto flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
 
-        <!-- Left Section: Ad/Promo Banner (Similar to TWD's persistent left sidebar) -->
+        <!-- Left Section: Ad/Promo Banner -->
         <div class="hidden md:block md:w-5/12">
             <div class="bg-white p-6 rounded-lg form-card border border-gray-200 h-full">
                 <h2 class="text-xl font-bold text-gray-700 mb-4">Why Sign Up with TMD?</h2>
@@ -201,11 +91,6 @@
                     Welcome to <span class="twd-indigo-text">TMD</span>
                 </h1>
                 <p class="text-center">Log in with your existing account or register.</p>
-
-                <!-- Feedback Box -->
-                <div id="feedback-box" class="p-3 rounded-lg text-center mt-4 bg-gray-200 text-gray-800">
-                    <p id="feedback-message">Initializing Firebase and authenticating user...</p>
-                </div>
 
                 <!-- Logged In Message (Hidden by default) -->
                 <div id="welcome-message" class="hidden text-center mt-8 p-6 bg-green-50 rounded-lg border border-green-200">
@@ -252,11 +137,8 @@
                     class="twd-indigo w-full text-white font-semibold py-3 rounded-lg text-lg uppercase tracking-wider twd-indigo-hover transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f68b1e] shadow-md">
                     Create an Account
                 </button>
-
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
